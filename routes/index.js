@@ -1,0 +1,57 @@
+var express = require('express');
+var router = express.Router();
+
+// const indexController = require('../controller/indexController')
+// const toDoController = require('../controller/todoListController')
+const ThriftCollector = require('../controller/thriftController')
+const FileController = require('../controller/fileController')
+
+router.get('/', ThriftCollector.getAuthPage)
+router.get('/create-account', ThriftCollector.getRegisterPage)
+router.post('/create-account', ThriftCollector.registerUser)
+router.get('/dashboard', ThriftCollector.showDashboard)
+router.post('/', ThriftCollector.postLogin)
+router.get('/logout', ThriftCollector.logOut)
+router.get('/dashboard/groups', ThriftCollector.getGroups)
+router.post('/dashboard/groups', ThriftCollector.postGroups)
+router.get('/groups/:id/delete?', ThriftCollector.deleteGroup)
+router.post('/groups/:id', ThriftCollector.editGroup)
+router.get('/groups/:id', ThriftCollector.getEditGroup)
+router.get('/profile', ThriftCollector.showProfile)
+router.post('/profile',FileController.userUpload.single('picture'), ThriftCollector.editProfile)
+router.get('/resetpassword', ThriftCollector.getResetPassword)
+router.post('/resetpassword', ThriftCollector.verifyUser)
+router.get('/updatepassword', ThriftCollector.showUpdate)
+router.post('/updatepassword', ThriftCollector.updatePassword)
+router.get('/dashboard/customers', ThriftCollector.showCustomers)
+router.post('/dashboard/customers', ThriftCollector.postCustomers)
+router.get('/customer/:id/delete?', ThriftCollector.deleteCustomer)
+router.post('/customer/:id', ThriftCollector.editCustomer)
+router.get('/customer/:id', ThriftCollector.showEditCustomer)
+router.get('/dashboard/payment', ThriftCollector.getPayment)
+router.post('/dashboard/payment', ThriftCollector.postPayment)
+router.get('/dashboard/payment/profit', ThriftCollector.showProfit)
+router.get('/dashboard/stats', ThriftCollector.getStats)
+router.get('/dashboard/stats/:id', ThriftCollector.showGroupStats)
+router.get('/dashboard/stats/:id/Credit', ThriftCollector.getCredit)
+router.get('/dashboard/stats/:id/Debit', ThriftCollector.getDebit)
+router.get('/dashboard/stats/:id/Profit', ThriftCollector.getProfit)
+router.get('/dashboard/stats/customer/:id', ThriftCollector.getCustomerTransaction)
+
+router.post('/save-profit', ThriftCollector.saveProfit)
+router.post('/display-customer', ThriftCollector.displayCustomer)
+
+/* GET home page. */
+// router.get('/', indexController.index);
+// router.get("/about", indexController.about)
+// router.get("/courses", indexController.courses)
+// router.post('/about', indexController.sendForm)
+// router.get('/todolist', toDoController.showTodo)
+// router.post('/todolist', toDoController.createTodo)
+// router.get('/todolist/all', toDoController.showToDoList)
+// router.get('/todolist/:id', toDoController.getSingleToDo)
+// router.post('/todolist/:id', toDoController.updateToDo)
+// router.get('/todolist/:id/delete', toDoController.deleteToDo)
+// router.get('ajo/landingpage', ajoController.showLandingPage)
+
+module.exports = router;

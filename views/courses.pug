@@ -1,0 +1,23 @@
+include includes/header.pug
+
+block content
+    h1 These are the #{title}
+        div(class="container")
+            div(class="row justify-content-center")
+                div(class="col-md-8")
+                    div(class="table-responsive")
+                        table(class="table table-striped table-bordered text-center")
+                            thead
+                                th S/N
+                                th NAME
+                                th PRICE
+                                th DURATION
+                                th DETAILS
+                            tbody
+                                each course,index in courses
+                                    tr
+                                        td #{index + 1}
+                                        td #{course.name}
+                                        td ₦#{course.price.toLocaleString()}
+                                        td #{course.duration}
+                                        td #{course.details}

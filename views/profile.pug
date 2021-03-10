@@ -1,0 +1,49 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+            include includes/sidebar.pug
+            div(class="main-panel" id="main-panel")
+                include includes/navbar.pug
+                div(class="content")
+                    div(class="row")
+                        div(class="col-md-8")
+                            div(class="card")
+                                div(class="card-header")
+                                    h5(class="title") Edit Profile
+                                div(class="card-body")
+                                        //- form(method='POST' class='form-field')          
+                                        //-     label Edit Name
+                                        //-     input(type="text", name="name", class='form-control mb-3' required)
+                                        //-     label Edit Mobile Number
+                                        //-     input(type="number", name="number", class='form-control mb-3' required)
+                                        //-     .text-center
+                                        //-         input(type='submit' class='main-btn mb-3' value='Edit')
+                        div(class="col-md-4")
+                            div(class="card card-user")
+                                div(class="image")
+                                    img(src='/images/bg5.jpg')
+                                div(class="card-body")
+                                    form(method='POST' enctype='multipart/form-data')
+                                        div(class="author")
+                                            a(href="#")
+                                                if user.profileImage
+                                                    - let imageUrl = '/uploads/' + user.profileImage
+                                                    img(class="avatar border-gray" src=imageUrl id='imageU')
+                                                else
+                                                    img(class="avatar border-gray" src="/images/avatar-3.jpg" id='imageU')
+                                                div
+                                                    label(class='btn btn-file') #[i(class='tim-icons icon-upload')] Change Image
+                                                        input(type='file', name='picture', id='picture')
+                                                    p#displayImage 
+                                                input(type='submit' value='Send' class='btn btn-info')  
+                                                h5(class="title") #{user.name}
+                                            p(class="description") #{user.email}
+                                            p(class="description") #{user.mobile}
+                                        //- .text-center
+                                        //-     img(class="avatar border-gray" src="")
+
+
+        script(src='/javascripts/handleImage.js')                         
+        include includes/footer.pug
+    

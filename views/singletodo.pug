@@ -1,0 +1,14 @@
+include includes/header.pug
+block content
+    .container
+        p #[strong Date:] #[span #{todo.todo_date.toLocaleDateString()}]
+        .row.justify-content-center
+            .col-md-6
+                form(method="POST")
+                    input(type='text' name='title' value=todo.title class='form-control mb-3')
+                    textarea(name="description", cols="20", rows="10" class="form-control mb-3") #{todo.description}
+                    p.mb-3
+                        input(name='complete' checked = todo.completed type='checkbox')
+                        label.ml-2 Completed?
+                    input(type='submit' class='btn btn-dark' value='Update')
+                p.mt-3 #[a(href='/todolist/all' class='btn btn-primary') Check All ToDo List]

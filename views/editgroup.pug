@@ -1,0 +1,62 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+            include includes/sidebar.pug
+            div(class="main-panel" id="main-panel")
+                include includes/navbar.pug
+                div(class="content")
+                    div(class="row")
+                        div(class="col-md-12")
+                            div(class="card")
+
+                                
+                                div(class="card-header")
+                                    h5(class="title") Edit Group
+                                div(class="card-body")
+                                    .row
+                                        .col-md-6
+                                            form(method='POST' class='form-field')          
+                                                label New Group Name
+                                                input(type="text", name="name", class='form-control mb-3' value=group.name required)
+                                                label New Amount
+                                                input(type="number", name="amount", class='form-control mb-3' value=group.amount required)
+                                                label New Period
+                                                    select(name="period", class='form-control mb-3 custom-select', value=group.period)
+                                                        option(value="Daily") Daily
+                                                        option(value="Weekly") Weekly
+                                                        option(value="Monthly") Monthly
+                                                        option(value="Yearly") Yearly
+                                                if !group.completed
+                                                    .text-center
+                                                        input(type='submit' class='main-btn mb-3' value='Edit')
+                                                else
+                                                    p You have declared your profit , Hence You cannot edit group
+                                        .col-md-6
+                                            if !group.completed
+                                                h5 Complete Group
+                                                p.complete(id=group._id)
+                                                label Profit Percentage
+                                                input(type='number' class='form-control mb-3' name='profit' id='profit')
+                                                .text-center
+                                                    a(href='#' data-toggle="modal" data-target=`#confirm`) Confirm
+                                                    div(class="modal fade" id=`confirm` role="dialog" aria-hidden="true")
+                                                        div(class="modal-dialog" role="document")
+                                                            div(class="modal-content")
+                                                                div(class="modal-header")
+                                                                    h5 Complete Group?
+                                                                    button(class="close" type="button" data-dismiss="modal" aria-label="Close")
+                                                                        span(aria-hidden="true") ×
+                                                                div(class="modal-body") 
+                                                                    p Are you sure you are ready to complete this group? There is no going back when you state your profit
+                                                                    p#displayMessage
+                                                                div(class='modal-footer')
+                                                                    a(href='#' id='submit' class='btn btn-sm btn-danger') Yes
+                                                                    a(href='#' class='btn btn-sm btn-info ml-2'  data-dismiss="modal" aria-label="Close") No
+
+
+
+
+        script(src='/javascripts/profit.js' type='module')
+        include includes/footer.pug
+    

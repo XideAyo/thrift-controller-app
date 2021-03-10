@@ -1,0 +1,70 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+                include includes/sidebar.pug
+                div(class="main-panel" id="main-panel")
+                    include includes/navbar.pug
+                    div(class="content")
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="card")
+                                    div(class="card-header d-flex justify-content-between")
+                                        h5(class="title mb-3") All Customers
+                                        p #[a(href="#" data-toggle="modal" data-target="#createModal" class="btn btn-info") Add Customer #[i(class="fa fa-plus ml-1")]]
+                                    .card-body
+                                        .row
+                                            div(class="modal fade" id="createModal" role="dialog" aria-hidden="true")
+                                                div(class="modal-dialog" role="document")
+                                                    div(class="modal-content")
+                                                        div(class="modal-header")
+                                                            h5 Create a new customer
+                                                            button(class="close" type="button" data-dismiss="modal" aria-label="Close")
+                                                                span(aria-hidden="true") ×
+                                                        div(class="modal-body") 
+                                                            form(method='POST' class='form-field')          
+                                                                label First Name
+                                                                input(type="text", name="firstname", class='form-control mb3' required)
+                                                                label Last Name
+                                                                input(type="text", name="lastname", class='form-control mb3' required)
+                                                                label Email
+                                                                input(type="email", name="email", class='form-control mb3' required)
+                                                                label Mobile Number
+                                                                input(type="text", name="mobile", class='form-control mb3' required)
+                                                                label Address
+                                                                input(type="text", name="address", class='form-control mb3' required)
+                                                                label Group
+                                                                select(name="group", class='form-control mb-3 custom-select')
+                                                                    each group in groups
+                                                                        option(value=group._id) #{group.name}
+                                                                .text-center
+                                                                    input(type='submit' class='main-btn mb-3' value='Create')
+                                    hr
+                                    .card-body
+                                        .row.justify-content-center
+                                            .col-md-12
+                                                    div(class="table-responsive form-field")
+                                                        table(class="table table-bordered" id="dataTable")
+                                                            thead
+                                                                th First Name
+                                                                th Last Name 
+                                                                th Email 
+                                                                th Mobile
+                                                                th Group
+                                                                th Address
+                                                                th Created by 
+                                                                th Actions
+                                                            tbody
+                                                                each customer in customers
+                                                                    -let deleteUrl = `/customer/${customer._id}/delete?`
+                                                                    -let editUrl = `/customer/${customer._id}`
+                                                                    tr
+                                                                        td #{customer.firstName}
+                                                                        td #{customer.lastName}
+                                                                        td #{customer.email}
+                                                                        td #{customer.mobile}
+                                                                        td #{customer.group.name}
+                                                                        td #{customer.address}
+                                                                        td #{customer.createdBy.name}
+                                                                        td.text-center #[a(href=`${editUrl}`  class="btn btn-info mb-2") Edit] #[a(href=`${deleteUrl}` class='btn btn-danger') Delete]
+        include includes/footer.pug                               

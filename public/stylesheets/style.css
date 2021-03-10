@@ -1,0 +1,357 @@
+
+/*============= Normalization =================*/
+.bg-gradient{
+    background: linear-gradient(to right, #252570, #4e73df);
+    background-size: contain;
+}
+.bg-gradient h4{
+    color: #fff;
+}
+.bg-gradient p a{
+    color: #fff;
+    text-decoration: underline;
+}
+.logo{
+    font-size: 1.3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #202c2d;
+    text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5, -2px 3px #808d93, -3px 2px #cdd2d5,
+    -3px 4px #808d93, -4px 3px #cdd2d5, -4px 5px #808d93, -5px 4px #cdd2d5, -5px 6px #808d93, -6px 5px #cdd2d5,
+    -6px 7px #808d93, -7px 6px #cdd2d5, -7px 8px #808d93, -8px 7px #cdd2d5;
+    padding: 5px;
+    border-radius: 8px;
+}
+.img-bg{
+    margin-top: 30px;
+}
+.top{
+    margin-top: 70px;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1, .h1 {
+  font-size: 2.5rem;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.5rem;
+}
+
+h4, .h4 {
+  font-size: 1.5rem;
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
+}
+a{
+    color: #4e73df;
+    text-decoration: none;
+}
+a:hover{
+    color: #2e59d9;
+    text-decoration: none;
+}
+
+/*============ Basic==============*/
+.hide-form{
+    margin-top: 15px;
+    display: none;
+}
+.small-text{
+    font-size: .8rem;
+}
+.text-small{
+    font-size: .9rem;
+}
+.box{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 5px;
+}
+.box a{
+    cursor: pointer;
+}
+.box-field{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-right: 5px solid #7968e6;
+    color: rgba(0, 0, 0, 0.8);
+}
+.box-field .stat h6{
+    font-weight: 700;
+}
+.box-field p, .box-field i{
+    font-size: 1.5rem;
+}
+.card-box{
+    background: #fff;
+    padding: 20px;
+}
+.form-field{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+.label{
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.dashboard-row a{
+    color: #000000;
+}
+.stat-box{
+    padding: 10px 20px;
+    border-right: 3px solid #6666ff;
+}
+.stat-box .total{
+    font-size: .9rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+.stat-box .number{
+    font-weight: bold;
+}
+.stat-box .icon{
+    color: #4e73df;
+}
+.stat-box .icon2{
+    color: #383164;
+}
+.stat-box .icon3{
+    color: #28a745;
+}
+.card.card-chart{
+    padding: 20px;
+}
+
+/*========== Buttons ==================*/
+.main-btn{
+    outline: 0;
+    border: 0;
+    background: #6666ff;
+    padding: 8px 15px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 700;
+}
+.main-btn:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.next-btn{
+    text-decoration: none;
+    background: #f8f9fc;
+    box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.5), inset 8px 8px 10px rgba(0, 0, 0, 0.1);
+    padding: 4px 15px;
+    font-size: .9rem;
+    color: rgba(0, 0, 0, 0.9);
+}
+.next-btn:hover{
+    color: #000000;
+    opacity: 1;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 10px rgba(0, 0, 0, 0.2);
+}
+.ace-btn{
+    outline: 0;
+    border: 0;
+    background: #6666ff;
+    padding: 4px 15px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: .85rem;
+}
+.ace-btn:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.red-btn{
+    outline: 0;
+    border: 0;
+    background: #DC143C;
+    padding: 4px 15px;
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: .85rem;
+}
+.red-btn:hover{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+.cancel-btn{
+    outline: 0;
+    border: 0;
+    background: #A9A9A9;
+    padding: 4px 15px;
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: .85rem;
+}
+.cancel-btn:hover{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+.red-btn:hover{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+.main-link{
+    font-weight: 550;
+    font-size: .9rem;
+}
+.red-color{
+    color: #f00;
+}
+.red-color:hover{
+    color: rgb(238, 20, 20);
+}
+.card{
+    padding: 20px;
+}
+.grey-text{
+    color: #9a9a9a;
+    font-size: 13px;
+    padding-left: 17px; 
+}
+.reset{
+    text-decoration: none;
+    margin-left: 10px;
+}
+a.collapsed i::before {
+    content: "\f055" !important;
+}
+
+/*========== Forms ===============*/
+.err-msg{
+    font-size: .9rem;
+    font-weight: 600;
+    color: rgb(163, 13, 13);
+    font-style: italic;
+}
+.form-control{
+    height: calc(1.35em + 0.7rem + 2px) !important;
+    padding: 0.3rem 0.75rem !important;
+    font-size: 0.9rem !important;
+}
+.form-control:focus{
+    border-color: #7d8baa;
+    box-shadow: none;
+}
+textarea.form-control{
+    height : 100px !important;
+}
+.multiple-select.form-control{
+    height : 80px !important;
+}
+.copy-form{
+    padding-left: 10px;
+    width: 300px;
+    outline: none;
+    font-size: .9rem;
+}
+.btn-primary.btn-file{
+    background: #6666ff !important;
+    border: none;
+    font-size: .9rem;
+}
+.btn-file input[type='file']{
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    opacity : 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+}
+.btn-file{
+    position: relative;
+    overflow: hidden;
+    background: #383164;
+    color: #ffffff !important;
+}
+.btn-file:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+.btn-file2 input[type="file"]{
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    opacity : 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+}
+.btn-file2{
+    position: relative;
+    overflow: hidden;
+    background: #6666ff;
+    color: #ffffff;
+    padding: 8px;
+    font-size: .9rem;
+    text-align: center;
+    cursor: pointer;
+}
+.btn-file2:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+.profile-form{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    font-size: .9rem;
+    width: 100%;
+}
+.profile-form:focus{
+    box-shadow: none;
+}
+/*============ Tables ==================*/
+.table-responsive{
+    font-size : .9rem;
+}
+.page-item.active a{
+    background: #00CCFF !important;
+    border: none;
+    outline: none;
+}
+
+/*========== Questions =================*/
+.question-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.question-list li{
+    display: inline;
+    margin-right: 20px;
+}
+
+/*========= Attendance =============*/
+.flex-d{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.justify-space-between{
+    justify-content: space-between;
+}
+
+  

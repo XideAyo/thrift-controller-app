@@ -1,0 +1,31 @@
+block content
+    div(class="sidebar" data-color="green")
+        div(class="logo")
+            a(href="#" class="simple-text logo-mini") #[i(class="tim-icons icon-bank")]
+            a(href="#" class="simple-text logo-normal") My-Ajoo
+        div(class="sidebar-wrapper" id="sidebar-wrapper")
+            ul(class="nav")
+                li(class= dash_active)
+                    a(href="/dashboard")
+                        i(class="tim-icons icon-chart-pie-36")
+                        p Dashboard
+                li(class=group_active)
+                    a(href="/dashboard/groups")
+                        i(class="tim-icons icon-badge")
+                        p Groups
+                li(class=customer_active)
+                    a(href="/dashboard/customers")
+                        i(class="tim-icons icon-satisfied")
+                        p Customers
+
+                li(class=payment_active)
+                    a(href="/dashboard/payment")
+                        i(class="tim-icons icon-wallet-43")
+                        p Payments
+
+                li(class=stats_active)
+                    a(href="/dashboard/stats")
+                        i(class="tim-icons icon-wallet-43")
+                        p Statistics
+
+                

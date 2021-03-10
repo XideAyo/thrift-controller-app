@@ -1,0 +1,78 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+                include includes/sidebar.pug
+                div(class="main-panel" id="main-panel")
+                    include includes/navbar.pug
+                    div(class="content")
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="card")
+                                    div(class="card-header d-flex justify-content-between")
+                                        h5(class="title mb-3") Payments Made
+                                        p #[a(href="#" data-toggle="modal" data-target="#addModal" class="btn btn-info") New Payment #[i(class="fa fa-plus ml-1")]]
+                                    .card-body
+                                        .row
+                                            div(class="modal fade" id="addModal" role="dialog" aria-hidden="true")
+                                                div(class="modal-dialog" role="document")
+                                                    div(class="modal-content")
+                                                        div(class="modal-header")
+                                                            h5 New Payment
+                                                            button(class="close" type="button" data-dismiss="modal" aria-label="Close")
+                                                                span(aria-hidden="true") ×
+                                                        div(class="modal-body") 
+                                                            form(method='POST' class='form-field') 
+                                                                label Payment Type
+                                                                select(name="type" class='form-control mb-3 custom-select' id='type')
+                                                                    option(value="Credit") Credit
+                                                                    option(value="Debit") Debit
+                                                                label Customer(First Name)
+                                                                select(name="customer", class='form-control mb-3 custom-select' id='customer')
+                                                                    option(selected disabled hidden) --Select a Customer--
+                                                                    each customer in customers
+                                                                        option(value=customer._id) #{customer.firstName}
+                                                                label Customer(Last Name)
+                                                                input(type="text", name="lastname", class='form-control mb-3' id="lastname" readonly)
+                                                                label Group
+                                                                input(type="text", name="group", class='form-control mb-3' id="group" readonly)
+                                                                label Amount
+                                                                input(type="number", name="amount", class='form-control mb-3' id="amount" readonly)
+                                                                label Means of Payment
+                                                                select(name="means" class='form-control mb-3 custom-select')
+                                                                    option(selected disabled hidden)  Select One
+                                                                    option(value="bank") Bank Transfer
+                                                                    option(value="cash") Cash
+                                                                     option(value="cheque") Cheque
+                                                                label Date
+                                                                input(type='date', name='date' class='form-control mb-3')
+                                                                .text-center
+                                                                    input(type='submit' class='main-btn mb-3' value='Save')
+                                    hr
+                                    .card-body
+                                        .row.justify-content-center
+                                            .col-md-10
+                                                p #[a(href='/dashboard/payment/profit' class='btn btn-info') View Profits]
+                                                if payments.length > 0
+                                                    div(class="table-responsive form-field")
+                                                        table(class="table table-bordered" id="dataTable")
+                                                            thead
+                                                                th Type
+                                                                th Customer
+                                                                th Group 
+                                                                th Amount
+                                                                th Date
+                                                                th MOP
+                                                            tbody
+                                                                each payment in payments
+                                                                    tr
+                                                                        td #{payment.paymentType}
+                                                                        td #[a(href=`/dashboard/stats/customer/${payment.customer._id}`) #{payment.customer.firstName} #{payment.customer.lastName}]
+                                                                        td #{payment.group.name}
+                                                                        td #{payment.amount}
+                                                                        td #{payment.paymentDate.toLocaleDateString()}
+                                                                        td #{payment.paymentMeans}
+
+
+    script(src='/javascripts/payment.js' type='module')
+    include includes/footer.pug

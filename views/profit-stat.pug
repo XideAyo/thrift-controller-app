@@ -1,0 +1,37 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+                include includes/sidebar.pug
+                div(class="main-panel" id="main-panel")
+                    include includes/navbar.pug
+                    div(class="content")
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="card")
+                                    div(class="card-header")
+                                        h4(class="title mb-3") Profit
+                                        h5.text-center These are all profits made
+                                    .card-body
+                                        .row.justify-content-center
+                                            .col-md-10
+                                                if profits.length > 0
+                                                    div(class="table-responsive form-field")
+                                                        table(class="table table-bordered" id="dataTable")
+                                                            thead
+                                                                th Amount
+                                                                th Date
+                                                                th MOP
+                                                            tbody
+                                                                each profit in profits
+                                                                    tr
+                                                                        td &#x20A6;#{profit.amount.toLocaleString()}
+                                                                        td #{profit.paymentDate.toLocaleDateString()}
+                                                                        td #{profit.paymentMeans}
+                                                else    
+                                                    p There are no payments
+    
+
+
+
+    include includes/footer.pug

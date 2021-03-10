@@ -1,0 +1,31 @@
+include includes/header.pug
+block content
+    .container
+        h2.text-center This is all your To-Do List
+        p #[a(href="/todolist" class="btn btn-primary") Create More To-Do]
+        if todos.length > 0
+            .table-responsive
+                table(class = "table table-bordered")
+                    thead
+                        th Date
+                        th Title
+                        th Description
+                        th Completed
+                        th Edit
+                        th Delete
+                    tbody
+                        each todo in todos
+                            - let editUrl = "/todolist/" + todo._id
+                            - let deleteUrl = "/todolist/" + todo._id + '/delete'
+                            tr
+                                td #{todo.todo_date.toLocaleDateString()}
+                                td #{todo.title}
+                                td #{todo.description}
+                                if todo.completed
+                                    td Yes
+                                else 
+                                    td No
+                                td #[a(href=editUrl class="btn btn-info") Edit]
+                                td #[a(href=deleteUrl class="btn btn-danger") Delete]
+        else 
+            p.text-center You haven't created any TO-DO LIST

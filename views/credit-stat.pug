@@ -1,0 +1,39 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+                include includes/sidebar.pug
+                div(class="main-panel" id="main-panel")
+                    include includes/navbar.pug
+                    div(class="content")
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="card")
+                                    div(class="card-header")
+                                        h4(class="title mb-3") Credit Transactions
+                                        h5.text-center These are all credit transactions
+                                    .card-body
+                                        .row.justify-content-center
+                                            .col-md-10
+                                                if credits.length > 0
+                                                    div(class="table-responsive form-field")
+                                                        table(class="table table-bordered" id="dataTable")
+                                                            thead
+                                                                th Customer 
+                                                                th Amount
+                                                                th Date
+                                                                th MOP
+                                                            tbody
+                                                                each credit in credits
+                                                                    tr
+                                                                        td #[a(href=`/dashboard/stats/customer/${credit.customer._id}`) #{credit.customer.firstName} #{credit.customer.lastName}]
+                                                                        td &#x20A6;#{credit.amount.toLocaleString()}
+                                                                        td #{credit.paymentDate.toLocaleDateString()}
+                                                                        td #{credit.paymentMeans}
+                                                else    
+                                                    p There are no payments
+    
+
+
+
+    include includes/footer.pug

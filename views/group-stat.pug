@@ -1,0 +1,51 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+                include includes/sidebar.pug
+                div(class="main-panel" id="main-panel")
+                    include includes/navbar.pug
+                    div(class="content")
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="card")
+                                    div(class="card-header")
+                                        h4(class="title mb-3") #{group.name}
+                                        h5.text-center These are all payments in #{group.name}
+                                        .row.justify-content-center
+                                            .col-md-4
+                                                .row.justify-space-between
+                                                    .text-center.mb-4 Click on each payment type to see records on each
+                                                    a(href=`/dashboard/stats/${group._id}/Credit` class='btn btn-primary') #{singleCredit.paymentType}
+                                                    a(href=`/dashboard/stats/${group._id}/Debit` class='btn btn-primary') #{singleDebit.paymentType}
+                                                    a(href=`/dashboard/stats/${group._id}/Profit` class='btn btn-primary') #{singleProfit.paymentType}
+                                    .card-body
+                                        .row.justify-content-center
+                                            .col-md-10
+                                                if payments.length > 0
+                                                    div(class="table-responsive form-field")
+                                                        table(class="table table-bordered" id="dataTable")
+                                                            thead
+                                                                th Type
+                                                                th Customer 
+                                                                th Amount
+                                                                th Date
+                                                                th MOP
+                                                            tbody
+                                                                each payment in payments
+                                                                    tr
+                                                                        td #{payment.paymentType}
+                                                                        if payment.paymentType === 'Profit'
+                                                                            td No Customer
+                                                                        else 
+                                                                            td #[a(href=`/dashboard/stats/customer/${payment.customer._id}`) #{payment.customer.firstName} #{payment.customer.lastName}]
+                                                                        td &#x20A6;#{payment.amount.toLocaleString()}
+                                                                        td #{payment.paymentDate.toLocaleDateString()}
+                                                                        td #{payment.paymentMeans}
+                                                else    
+                                                    p There are no payments
+    
+
+
+
+    include includes/footer.pug

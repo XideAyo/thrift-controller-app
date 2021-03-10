@@ -1,0 +1,70 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+                include includes/sidebar.pug
+                div(class="main-panel" id="main-panel")
+                    include includes/navbar.pug
+                    div(class="content")
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="card")
+                                    div(class="card-header d-flex justify-content-between")
+                                        h5(class="title mb-3") List of Groups
+                                        p #[a(href="#" data-toggle="modal" data-target="#addModal" class="btn btn-info") New Groups #[i(class="fa fa-plus ml-1")]]
+                                    .card-body
+                                        .row
+                                            div(class="modal fade" id="addModal" role="dialog" aria-hidden="true")
+                                                div(class="modal-dialog" role="document")
+                                                    div(class="modal-content")
+                                                        div(class="modal-header")
+                                                            h5 Add a new group
+                                                            button(class="close" type="button" data-dismiss="modal" aria-label="Close")
+                                                                span(aria-hidden="true") ×
+                                                        div(class="modal-body") 
+                                                            form(method='POST' class='form-field')          
+                                                                label Name
+                                                                input(type="text", name="name", class='form-control mb3' required)
+                                                                label Amount
+                                                                input(type="number", name="amount", class='form-control mb3' required)
+                                                                label Period
+                                                                select(name="period", class='form-control mb-3 custom-select')
+                                                                    option(value="Daily") Daily
+                                                                    option(value="Weekly") Weekly
+                                                                    option(value="Monthly") Monthly
+                                                                    option(value="Yearly") Yearly
+                                                                .text-center
+                                                                    input(type='submit' class='main-btn mb-3' value='Save')
+                                    hr
+                                    .card-body
+                                        .row.justify-content-center
+                                            .col-md-10
+                                                if groups.length > 0
+                                                    div(class="table-responsive form-field")
+                                                        table(class="table table-bordered" id="dataTable")
+                                                            thead
+                                                                th Name
+                                                                th Amount 
+                                                                th Period 
+                                                                th Total Customers
+                                                                th Created by 
+                                                                th Actions
+                                                            tbody
+                                                                each group in groups
+                                                                    -let deleteUrl = `/groups/${group._id}/delete?`
+                                                                    -let editUrl = `/groups/${group._id}`
+                                                                    tr
+                                                                        td #{group.name}
+                                                                        td &#x20A6;#{group.amount}
+                                                                        td #{group.period}
+                                                                        td #{group.totalUsers}
+                                                                        td #{group.createdBy.name}
+                                                                        if group.completed
+                                                                            td Completed with #{group.profit.percentage}% profit
+                                                                        else
+                                                                            td.text-center #[a(href=`${editUrl}`  class="btn btn-info mb-3") Edit] #[a(href=`${deleteUrl}` class='btn btn-danger') Delete]
+                                                else
+                                                    p No group has been created
+
+    script(src='/javascripts/profit.js' type='module')
+    include includes/footer.pug

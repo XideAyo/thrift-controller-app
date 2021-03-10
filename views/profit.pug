@@ -1,0 +1,39 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+                include includes/sidebar.pug
+                div(class="main-panel" id="main-panel")
+                    include includes/navbar.pug
+                    div(class="content")
+                        div(class="row")
+                            div(class="col-md-12")
+                                div(class="card")
+                                    div(class="card-header d-flex justify-content-between")
+                                        h5(class="title mb-3") Profit Made
+                                        hr
+                                    .card-body
+                                        .row.justify-content-center
+                                            .col-md-10
+                                                p #[a(href='/dashboard/payment' class='btn btn-info') Back to Payments]
+                                                if payments.length > 0
+                                                    div(class="table-responsive form-field")
+                                                        table(class="table table-bordered" id="dataTable")
+                                                            thead
+                                                                th Type
+                                                                th Group 
+                                                                th Amount
+                                                                th Date
+                                                                th MOP
+                                                            tbody
+                                                                each payment in payments
+                                                                    tr
+                                                                        td Profit
+                                                                        td #{payment.group.name}
+                                                                        td ₦#{payment.amount.toLocaleString()}
+                                                                        td #{payment.paymentDate.toLocaleDateString()}
+                                                                        td #{payment.paymentMeans}
+                                                                
+
+
+    include includes/footer.pug

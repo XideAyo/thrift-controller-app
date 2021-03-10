@@ -1,0 +1,17 @@
+include includes/header.pug
+block content
+
+    .container
+        .row.justify-content-center
+            .col-md-6
+                form(method='POST')
+                    .form
+                        h3 #[label Date]
+                        input(type="date" class="form-control mb-3" name='date' required)
+                        h3 #[label Title]
+                        input(type="text" placeholder="Title" class="form-control mb-3" name='title' required)
+                        h3 #[label Description]
+                        textarea(type="text" placeholder= "Description" class="form-control mb-3" name='description' required)
+                        .textcenter
+                            input(type="submit" value="Create" class="form-control mb-3 btn btn-primary")
+                    p #[a(href='/todolist/all' class='btn btn-primary') Check all todolist]

@@ -1,0 +1,41 @@
+include includes/header.pug
+block content 
+    body(class="bg-gradient")
+        .container.top
+            .card
+                .row
+                    .col-md-6
+                        .card-body 
+                            p.logo #[a(href="/") #[i(class="tim-icons icon-bank mr-2")]  My-Ajoo]
+                            h6(class="mb-3 f-w-400") Create an account
+                            form(method="post" class="form-field")
+                                .row 
+                                    .col-md-6.mb-3
+                                        label Full Name
+                                        input(type='text' class="form-control" name='name' required)
+                                    .col-md-6.mb-3
+                                        label Email
+                                        input(type='email' class="form-control" name='email' required)
+                                    .col-md-6.mb-3
+                                        label Mobile Number
+                                        input(type='text' class="form-control" name='number' required)
+                                    .col-md-6.mb-3
+                                        label Password
+                                        input(type='password' class="form-control" name='password' required)
+                                    .col-md-6.mb-3
+                                        label Confirm Password
+                                        input(type='password' class="form-control" name='cPassword' required)
+                                    .col-md-6.mb-3
+                                        label Secret Word
+                                        input(type='text' class="form-control" name='secret' required)
+                                    .col-md-12.text-center
+                                        input(type='submit' class='main-btn' value='Create Account')
+                                        if error
+                                            .alert.alert-danger.alert-dismissible.fade-in.mt-3(role='alert')
+                                                button.close(type='button' data-dismiss='alert' aria-label='close')
+                                                    span(aria-hidden='true') x
+                                                span #{error}
+                    .col-md-6.d-none.d-lg-block 
+                        img(src='/images/bg5.jpg' class="img-fluid")
+    
+        include includes/footer.pug

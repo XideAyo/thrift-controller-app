@@ -1,0 +1,37 @@
+include includes/header.pug
+block content
+    body
+        div(class="wrapper")
+            include includes/sidebar.pug
+            div(class="main-panel" id="main-panel")
+                include includes/navbar.pug
+                div(class="content")
+                    div(class="row")
+                        div(class="col-md-8")
+                            div(class="card")
+                                div(class="card-header")
+                                    h5(class="title") Edit Customer
+                                div(class="card-body")
+                                    form(method='POST' class='form-field')          
+                                        label First Name
+                                        input(type="text", name="firstname", class='form-control mb3' value=customer.firstName required)
+                                        label Last Name
+                                        input(type="text", name="lastname", class='form-control mb3' value=customer.lastName required)
+                                        label Email
+                                        input(type="email", name="email", class='form-control mb3' value=customer.email required)
+                                        label Mobile Number
+                                        input(type="text", name="mobile", class='form-control mb3' value=customer.mobile required)
+                                        label Address
+                                        input(type="text", name="address", class='form-control mb3' value=customer.address required)
+                                        label Group
+                                        select(name="group", class='form-control mb-3 custom-select')
+                                            each group in groups
+                                                option(value=customer.group) #{group.name}
+                                        .text-center
+                                            input(type='submit' class='main-btn mb-3' value='Edit')
+                                        
+
+
+                                    
+        include includes/footer.pug
+    
