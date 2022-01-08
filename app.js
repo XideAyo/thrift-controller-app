@@ -62,7 +62,7 @@ app.use(function(err,req,res,next) {
 
 //Connecting to database
 const CONFIG = {
-    uri: "mongodb://127.0.0.1:27017/thrift-collection",
+    uri: process.env.MONGO_URI,
     OPTIONS: { 
         ssl : true ,
         useNewUrlParser : true ,
