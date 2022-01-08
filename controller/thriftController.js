@@ -463,7 +463,7 @@ class App {
     getCredit = async (req, res, next) => {
         if(req.session.email){
             const credits = await Payment.find({ $and : [{paymentType: 'Credit'}, {group: req.params.id}]}).populate('customer').populate('group')
-            const credit = await Payment.find({})
+        const credit = await Payment.find({})
             console.log(credit)
             res.render('credit-stat', {stats_active: 'active', credits})
         }else{

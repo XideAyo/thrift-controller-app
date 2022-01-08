@@ -10,7 +10,7 @@ const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session)
 
 const store = new MongoDBStore({
-    uri: process.env.MONGO_TEST,
+    uri:  process.env.MONGO_URI,
     collection: 'sessions'
 })
 var indexRouter = require('./routes/index');
@@ -62,8 +62,9 @@ app.use(function(err,req,res,next) {
 
 //Connecting to database
 const CONFIG = {
-    uri:process.env.MONGO_TEST,
-    OPTIONS: {
+    uri: "mongodb://127.0.0.1:27017/thrift-collection",
+    OPTIONS: { 
+        ssl : true ,
         useNewUrlParser : true ,
         useCreateIndex: true ,
         poolSize : 10 ,
